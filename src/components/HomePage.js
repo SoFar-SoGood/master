@@ -1,9 +1,13 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import GamePage from "./GamePage";
 
 function HomePage() {
   return (
     <div>
-      <h1>Home Page</h1>
+      <button>
+        <Link to="/GamePage">Let's dive in!</Link>
+      </button>
     </div>
   );
 }

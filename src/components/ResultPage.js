@@ -1,9 +1,12 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function ResultPage() {
   return (
     <div>
-      <h1>ResultPage</h1>
+      <button>
+        <Link to="/">Try Again!</Link>
+      </button>
     </div>
   );
 }
