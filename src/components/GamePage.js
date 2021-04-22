@@ -1,22 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import ResultPage from "./ResultPage";
+import parse from "html-react-parser";
 
-function GamePage() {
+function GamePage(props) {
+  const filteredQuestion = props.questions.filter((question, index) => {
+    return props.currentQuestion === index + 1;
+  });
+
   return (
     <div>
-      <button>
-        <Link to="/ResultPage">Correct answer</Link>
-      </button>
-      <button>
-        <Link to="/ResultPage">Incorrect answer</Link>
-      </button>
-      <button>
-        <Link to="/ResultPage">Incorrect answer</Link>
-      </button>
-      <button>
-        <Link to="/ResultPage">Incorrect answer</Link>
-      </button>
+      <h1>{props.currentQuestion}.</h1>
+      {filteredQuestion.map((item, index) => (
+        <div key={index}>
+          <h1>{parse(item.question)}</h1>
+          <p> {parse(item.correct_answer)} </p>
+          {item.incorrect_answers.map((answer, index) => (
+            <p key={index}>{parse(answer)}</p>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }

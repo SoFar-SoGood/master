@@ -8,6 +8,7 @@ import ResultPage from "./components/ResultPage";
 
 function App() {
   const [questions, setQuestions] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(1);
 
   function fetchQuestions(difficulty) {
     axios
@@ -40,7 +41,17 @@ function App() {
             )}
           />
 
-          <Route path="/game" component={GamePage} />
+          <Route
+            path="/game"
+            render={(props) => (
+              <GamePage
+                {...props}
+                currentQuestion={currentQuestion}
+                questions={questions}
+              />
+            )}
+          />
+
           <Route path="/result" component={ResultPage} />
           {/* <Route exact path="/" component={HomePage} /> */}
         </Switch>
