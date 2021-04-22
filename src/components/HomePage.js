@@ -1,12 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import GamePage from "./GamePage";
 
-function HomePage() {
+function HomePage(props) {
   return (
     <div>
-      <button>
-        <Link to="/GamePage">Let's dive in!</Link>
+      <button onClick={props.fetchQuestions}>
+        Let's dive in!
+        {/* <Link to="/GamePage">Let's dive in!</Link> */}
       </button>
     </div>
   );
