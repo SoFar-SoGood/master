@@ -6,16 +6,16 @@ function GamePage() {
   return (
     <div>
       <button>
-        <Link to="/ResultPage">Correct answer</Link>
+        <Link to="/resultpage">Correct answer</Link>
       </button>
       <button>
-        <Link to="/ResultPage">Incorrect answer</Link>
+        <Link to="/resultpage">Incorrect answer</Link>
       </button>
       <button>
-        <Link to="/ResultPage">Incorrect answer</Link>
+        <Link to="/resultpage">Incorrect answer</Link>
       </button>
       <button>
-        <Link to="/ResultPage">Incorrect answer</Link>
+        <Link to="/resultpage">Incorrect answer</Link>
       </button>
     </div>
   );
