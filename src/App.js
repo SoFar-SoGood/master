@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
@@ -7,44 +7,15 @@ import GamePage from "./components/GamePage";
 import ResultPage from "./components/ResultPage";
 
 function App() {
-  const [easyQuestions, setEasyQuestions] = useState([]);
-  const [mediumQuestions, setMediumQuestions] = useState([]);
-  const [hardQuestions, setHardQuestions] = useState([]);
+  const [questions, setQuestions] = useState([]);
 
-  const questions = [...easyQuestions, ...mediumQuestions, ...hardQuestions];
-  useEffect(() => {
-    console.log(questions);
-  }, []);
-
-  function easy() {
-    axios
-      .get("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple")
-      .then((response) => {
-        setEasyQuestions(response.data.results);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  function medium() {
+  function fetchQuestions(difficulty) {
     axios
       .get(
-        "https://opentdb.com/api.php?amount=5&difficulty=medium&type=multiple"
+        `https://opentdb.com/api.php?amount=5&difficulty=${difficulty}&type=multiple`
       )
       .then((response) => {
-        setMediumQuestions(response.data.results);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  function hard() {
-    axios
-      .get("https://opentdb.com/api.php?amount=5&difficulty=hard&type=multiple")
-      .then((response) => {
-        setHardQuestions(response.data.results);
+        setQuestions([...questions, ...response.data.results]);
       })
       .catch((error) => {
         console.log(error);
@@ -56,22 +27,22 @@ function App() {
       <div>
         <Switch>
           <Route
+            exact
             path="/"
             render={(props) => (
               <HomePage
                 {...props}
                 fetchQuestions={() => {
-                  easy();
-                  medium();
-                  hard();
+                  fetchQuestions("easy");
+                  props.history.push("/game");
                 }}
               />
             )}
           />
 
-          <Route path="/GamePage" component={GamePage} />
-          <Route path="/ResultPage" component={ResultPage} />
-          {/* <Route path="/" component={HomePage} /> */}
+          <Route path="/game" component={GamePage} />
+          <Route path="/result" component={ResultPage} />
+          {/* <Route exact path="/" component={HomePage} /> */}
         </Switch>
       </div>
     </div>
