@@ -48,6 +48,7 @@ function App() {
                 {...props}
                 currentQuestion={currentQuestion}
                 questions={questions}
+                setCurrentQuestion={setCurrentQuestion}
               />
             )}
           />
