@@ -23,10 +23,20 @@ function GamePage(props) {
     if (userAnswer === correctAnswer) {
       props.setCurrentQuestion(props.currentQuestion + 1);
     } else {
-      props.history.push("/result");
+      return props.history.push("/result");
     }
-    console.log("correct answer:", correctAnswer, "user answer:", userAnswer);
-    // props.setCurrentQuestion(props.currentQuestion + 1);
+
+    if (props.currentQuestion === 5) {
+      props.fetchQuestions("medium");
+    }
+    if (props.currentQuestion === 10) {
+      props.fetchQuestions("hard");
+    }
+    if (props.currentQuestion === 15) {
+      return props.history.push("/result");
+    }
+    // console.log("correct answer:", correctAnswer, "user answer:", userAnswer);
+    //props.setCurrentQuestion(props.currentQuestion + 1);
   };
 
   return (

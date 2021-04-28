@@ -48,6 +48,7 @@ function App() {
             render={(props) => (
               <GamePage
                 {...props}
+                fetchQuestions={fetchQuestions}
                 currentQuestion={currentQuestion}
                 questions={questions}
                 setCurrentQuestion={setCurrentQuestion}

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function ResultPage(props) {
   function resetQuestions() {
@@ -9,7 +8,7 @@ function ResultPage(props) {
 
   return (
     <div>
-      <button onClick={resetQuestions}>Try Again!</button>
+      <button onClick={resetQuestions}>Play Again!</button>
     </div>
   );
 }
