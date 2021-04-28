@@ -19,8 +19,14 @@ function GamePage(props) {
     return allAnswers;
   }
 
-  const questionNumber = () => {
-    return props.setCurrentQuestion(props.currentQuestion + 1);
+  const questionStatus = (userAnswer, correctAnswer) => {
+    if (userAnswer === correctAnswer) {
+      props.setCurrentQuestion(props.currentQuestion + 1);
+    } else {
+      props.history.push("/result");
+    }
+    console.log("correct answer:", correctAnswer, "user answer:", userAnswer);
+    // props.setCurrentQuestion(props.currentQuestion + 1);
   };
 
   return (
@@ -32,7 +38,10 @@ function GamePage(props) {
 
           {shuffleAnswers(item.correct_answer, item.incorrect_answers).map(
             (answer, index) => (
-              <button onClick={questionNumber} key={index}>
+              <button
+                onClick={() => questionStatus(answer, item.correct_answer)}
+                key={index}
+              >
                 {parse(answer)}
               </button>
             )

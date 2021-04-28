@@ -34,8 +34,10 @@ function App() {
               <HomePage
                 {...props}
                 fetchQuestions={() => {
+                  //setQuestions([]);
                   fetchQuestions("easy");
                   props.history.push("/game");
+                  setCurrentQuestion(1);
                 }}
               />
             )}
@@ -53,7 +55,12 @@ function App() {
             )}
           />
 
-          <Route path="/result" component={ResultPage} />
+          <Route
+            path="/result"
+            render={(props) => (
+              <ResultPage {...props} setQuestions={setQuestions} />
+            )}
+          />
           {/* <Route exact path="/" component={HomePage} /> */}
         </Switch>
       </div>

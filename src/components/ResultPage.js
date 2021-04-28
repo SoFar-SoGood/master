@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ResultPage() {
+function ResultPage(props) {
+  function resetQuestions() {
+    props.setQuestions([]);
+    props.history.push("/");
+  }
+
   return (
     <div>
-      <button>
-        <Link to="/">Try Again!</Link>
-      </button>
+      <button onClick={resetQuestions}>Try Again!</button>
     </div>
   );
 }
