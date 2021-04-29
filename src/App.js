@@ -9,6 +9,7 @@ import ResultPage from "./components/ResultPage";
 function App() {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [moneyDisplay, setMoneyDisplay] = useState(100);
 
   function fetchQuestions(difficulty) {
     axios
@@ -34,7 +35,7 @@ function App() {
               <HomePage
                 {...props}
                 fetchQuestions={() => {
-                  //setQuestions([]);
+                  // setQuestions([]);
                   fetchQuestions("easy");
                   props.history.push("/game");
                   setCurrentQuestion(1);
@@ -52,6 +53,8 @@ function App() {
                 currentQuestion={currentQuestion}
                 questions={questions}
                 setCurrentQuestion={setCurrentQuestion}
+                moneyDisplay={moneyDisplay}
+                setMoneyDisplay={setMoneyDisplay}
               />
             )}
           />
@@ -59,7 +62,13 @@ function App() {
           <Route
             path="/result"
             render={(props) => (
-              <ResultPage {...props} setQuestions={setQuestions} />
+              <ResultPage
+                {...props}
+                setQuestions={setQuestions}
+                setMoneyDisplay={setMoneyDisplay}
+                currentQuestion={currentQuestion}
+                setCurrentQuestion={setCurrentQuestion}
+              />
             )}
           />
           {/* <Route exact path="/" component={HomePage} /> */}

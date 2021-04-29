@@ -1,7 +1,10 @@
 import React from "react";
 import parse from "html-react-parser";
+import MoneyDisplay from "./MoneyDisplay";
 
 function GamePage(props) {
+  // console.log(props);
+
   const filteredQuestion = props.questions.filter((question, index) => {
     return props.currentQuestion === index + 1;
   });
@@ -21,8 +24,17 @@ function GamePage(props) {
 
   const questionStatus = (userAnswer, correctAnswer) => {
     if (userAnswer === correctAnswer) {
-      props.setCurrentQuestion(props.currentQuestion + 1);
+      if (props.currentQuestion < 15) {
+        props.setCurrentQuestion(props.currentQuestion + 1);
+      }
+
+      if (props.currentQuestion === 14) {
+        props.setMoneyDisplay(1000000);
+      } else {
+        props.setMoneyDisplay(props.moneyDisplay * 2);
+      }
     } else {
+      props.setMoneyDisplay(0);
       return props.history.push("/result");
     }
 
@@ -41,6 +53,7 @@ function GamePage(props) {
 
   return (
     <div>
+      <h1>{props.moneyDisplay}$</h1>
       <h1>{props.currentQuestion}.</h1>
       {filteredQuestion.map((item, index) => (
         <div key={index}>
