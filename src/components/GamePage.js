@@ -53,24 +53,28 @@ function GamePage(props) {
 
   return (
     <div>
-      <h1>{props.moneyDisplay}$</h1>
-      <h1>{props.currentQuestion}.</h1>
-      {filteredQuestion.map((item, index) => (
-        <div key={index}>
-          <h1>{parse(item.question)}</h1>
+      {props.questions.length ? (
+        <div>
+          <h1>{props.moneyDisplay}$</h1>
+          <h1>{props.currentQuestion}.</h1>
+          {filteredQuestion.map((item, index) => (
+            <div key={index}>
+              <h1>{parse(item.question)}</h1>
 
-          {shuffleAnswers(item.correct_answer, item.incorrect_answers).map(
-            (answer, index) => (
-              <button
-                onClick={() => questionStatus(answer, item.correct_answer)}
-                key={index}
-              >
-                {parse(answer)}
-              </button>
-            )
-          )}
+              {shuffleAnswers(item.correct_answer, item.incorrect_answers).map(
+                (answer, index) => (
+                  <button
+                    onClick={() => questionStatus(answer, item.correct_answer)}
+                    key={index}
+                  >
+                    {parse(answer)}
+                  </button>
+                )
+              )}
+            </div>
+          ))}
         </div>
-      ))}
+      ) : null}
     </div>
   );
 }
