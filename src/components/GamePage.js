@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import parse from "html-react-parser";
-import MoneyDisplay from "./MoneyDisplay";
 
 function GamePage(props) {
   // console.log(props);
