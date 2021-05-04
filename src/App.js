@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import GamePage from "./components/GamePage";
-import ResultPage from "./components/ResultPage";
+import HomePage from "./components/HomePage/HomePage";
+import GamePage from "./components/GamePage/GamePage";
+import ResultPage from "./components/ResultPage/ResultPage";
 
 function App() {
   const [questions, setQuestions] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [moneyDisplay, setMoneyDisplay] = useState(100);
 
   function fetchQuestions(difficulty) {
     axios
@@ -33,15 +35,42 @@ function App() {
               <HomePage
                 {...props}
                 fetchQuestions={() => {
+                  // setQuestions([]);
                   fetchQuestions("easy");
                   props.history.push("/game");
+                  setCurrentQuestion(1);
                 }}
               />
             )}
           />
 
-          <Route path="/game" component={GamePage} />
-          <Route path="/result" component={ResultPage} />
+          <Route
+            path="/game"
+            render={(props) => (
+              <GamePage
+                {...props}
+                fetchQuestions={fetchQuestions}
+                currentQuestion={currentQuestion}
+                questions={questions}
+                setCurrentQuestion={setCurrentQuestion}
+                moneyDisplay={moneyDisplay}
+                setMoneyDisplay={setMoneyDisplay}
+              />
+            )}
+          />
+
+          <Route
+            path="/result"
+            render={(props) => (
+              <ResultPage
+                {...props}
+                setQuestions={setQuestions}
+                setMoneyDisplay={setMoneyDisplay}
+                currentQuestion={currentQuestion}
+                setCurrentQuestion={setCurrentQuestion}
+              />
+            )}
+          />
           {/* <Route exact path="/" component={HomePage} /> */}
         </Switch>
       </div>
