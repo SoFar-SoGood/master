@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import parse from "html-react-parser";
+// import "./GamePage.css";
 
 function GamePage(props) {
   // console.log(props);
