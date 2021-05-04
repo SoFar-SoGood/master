@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import MoneyDisplay from "./MoneyDisplay";
 
 function GamePage(props) {
   // console.log(props);
+  const [userAnswerState, setUserAnswerState] = useState({});
+  console.log(userAnswerState);
+
+  useEffect(() => {
+    setUserAnswerState({});
+  }, [props.currentQuestion]);
 
   const filteredQuestion = props.questions.filter((question, index) => {
     return props.currentQuestion === index + 1;
@@ -24,26 +30,28 @@ function GamePage(props) {
 
   const questionStatus = (userAnswer, correctAnswer) => {
     if (userAnswer === correctAnswer) {
+      setUserAnswerState({ userChoice: userAnswer, color: "green" });
       if (props.currentQuestion < 15) {
         setTimeout(() => {
           props.setCurrentQuestion(props.currentQuestion + 1);
-        }, 2500);
+        }, 1500);
       }
 
       if (props.currentQuestion === 14) {
         setTimeout(() => {
           props.setMoneyDisplay(1000000);
-        }, 2500);
+        }, 1500);
       } else {
         setTimeout(() => {
           props.setMoneyDisplay(props.moneyDisplay * 2);
-        }, 2500);
+        }, 1500);
       }
     } else {
       props.setMoneyDisplay(0);
+      setUserAnswerState({ userChoice: userAnswer, color: "red" });
       setTimeout(() => {
         return props.history.push("/result");
-      }, 2500);
+      }, 1500);
     }
 
     if (props.currentQuestion === 5) {
@@ -55,7 +63,7 @@ function GamePage(props) {
     if (props.currentQuestion === 15) {
       setTimeout(() => {
         return props.history.push("/result");
-      }, 2500);
+      }, 1500);
     }
     // console.log("correct answer:", correctAnswer, "user answer:", userAnswer);
     //props.setCurrentQuestion(props.currentQuestion + 1);
@@ -74,8 +82,14 @@ function GamePage(props) {
               {shuffleAnswers(item.correct_answer, item.incorrect_answers).map(
                 (answer, index) => (
                   <button
+                    style={
+                      userAnswerState.userChoice === answer
+                        ? { backgroundColor: userAnswerState.color }
+                        : null
+                    }
                     onClick={() => questionStatus(answer, item.correct_answer)}
                     key={index}
+                    disabled={userAnswerState.userChoice ? true : false}
                   >
                     {parse(answer)}
                   </button>
