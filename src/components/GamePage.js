@@ -25,17 +25,25 @@ function GamePage(props) {
   const questionStatus = (userAnswer, correctAnswer) => {
     if (userAnswer === correctAnswer) {
       if (props.currentQuestion < 15) {
-        props.setCurrentQuestion(props.currentQuestion + 1);
+        setTimeout(() => {
+          props.setCurrentQuestion(props.currentQuestion + 1);
+        }, 2500);
       }
 
       if (props.currentQuestion === 14) {
-        props.setMoneyDisplay(1000000);
+        setTimeout(() => {
+          props.setMoneyDisplay(1000000);
+        }, 2500);
       } else {
-        props.setMoneyDisplay(props.moneyDisplay * 2);
+        setTimeout(() => {
+          props.setMoneyDisplay(props.moneyDisplay * 2);
+        }, 2500);
       }
     } else {
       props.setMoneyDisplay(0);
-      return props.history.push("/result");
+      setTimeout(() => {
+        return props.history.push("/result");
+      }, 2500);
     }
 
     if (props.currentQuestion === 5) {
@@ -45,7 +53,9 @@ function GamePage(props) {
       props.fetchQuestions("hard");
     }
     if (props.currentQuestion === 15) {
-      return props.history.push("/result");
+      setTimeout(() => {
+        return props.history.push("/result");
+      }, 2500);
     }
     // console.log("correct answer:", correctAnswer, "user answer:", userAnswer);
     //props.setCurrentQuestion(props.currentQuestion + 1);
