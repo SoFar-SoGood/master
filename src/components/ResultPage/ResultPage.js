@@ -1,5 +1,5 @@
 import React from "react";
-import ResultMessage from "./ResultMessage";
+import ResultMessage from "../ResultMessage/ResultMessage";
 
 function ResultPage(props) {
   function resetQuestions() {

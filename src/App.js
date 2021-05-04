@@ -2,9 +2,9 @@ import { React, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import GamePage from "./components/GamePage";
-import ResultPage from "./components/ResultPage";
+import HomePage from "./components/HomePage/HomePage";
+import GamePage from "./components/GamePage/GamePage";
+import ResultPage from "./components/ResultPage/ResultPage";
 
 function App() {
   const [questions, setQuestions] = useState([]);
