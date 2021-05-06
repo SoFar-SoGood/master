@@ -1,6 +1,6 @@
 button {
   font-family: "Nunito", sans-serif;
-  font-size: 20px;
+  cursor: pointer;
 }
 .game-page-wrapper {
   display: flex;
@@ -27,7 +27,7 @@ button {
 .game-page-question-number {
   color: white;
   background-color: black;
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 5px;
   font-size: 20px;
   margin: 0 auto -10px;
@@ -53,6 +53,7 @@ button {
   opacity: 65%;
   padding: 20px;
   margin-bottom: 15px;
+  font-size: 20px;
 }
 
 @media screen and (min-width: 600px) {
@@ -68,5 +69,33 @@ button {
   .game-page-answers-wrapper {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+  .game-page-width {
+    width: 960px;
+  }
+  .game-page-money-display {
+    margin-bottom: 80px;
+    font-size: 40px;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+  }
+  .game-page-question-number {
+    font-size: 30px;
+    width: 40px;
+    margin: 0 auto -16px;
+  }
+  .game-page-question {
+    margin-bottom: 50px;
+  }
+  .game-page-answers-buttons:nth-child(1) {
+    margin-right: 50px;
+  }
+  .game-page-answers-buttons:nth-child(3) {
+    margin-right: 50px;
+  }
+  .game-page-answers-buttons {
+    width: calc(50% - 25px);
+    margin-bottom: 30px;
   }
 }
