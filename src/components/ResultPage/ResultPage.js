@@ -1,4 +1,5 @@
 import React from "react";
+import "./ResultPage.css";
 import ResultMessage from "../ResultMessage/ResultMessage";
 
 function ResultPage(props) {
@@ -12,16 +13,30 @@ function ResultPage(props) {
     <div className="result-page-wrapper">
       <div>
         {props.currentQuestion <= 5 && (
-          <ResultMessage message="You're not Wild enough" />
+          <ResultMessage
+            title="You Lost!"
+            message="Not Wild enough!"
+            color="red"
+          />
         )}
         {props.currentQuestion > 5 && props.currentQuestion <= 14 && (
-          <ResultMessage message="Try harder to be Wilder" />
+          <ResultMessage
+            title="You Lost!"
+            message="Try harder to be Wilder!"
+            color="orange"
+          />
         )}
         {props.currentQuestion === 15 && (
-          <ResultMessage message="May the force be with you my Wildest one" />
+          <ResultMessage
+            title="Congratulations!"
+            message="May the force be with you my Wildest one!"
+            color="green"
+          />
         )}
 
-        <button onClick={resetQuestions}>Play Again!</button>
+        <button onClick={resetQuestions} className="result-page-buttons">
+          PLAY AGAIN
+        </button>
       </div>
     </div>
   );
