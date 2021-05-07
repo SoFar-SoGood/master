@@ -9,17 +9,20 @@ function ResultPage(props) {
   }
 
   return (
-    <div>
-      {props.currentQuestion <= 5 && (
-        <ResultMessage message="You're not Wild enough" />
-      )}
-      {props.currentQuestion > 5 && props.currentQuestion <= 14 && (
-        <ResultMessage message="Try harder to be Wilder" />
-      )}
-      {props.currentQuestion === 15 && (
-        <ResultMessage message="May the force be with you my Wildest one" />
-      )}
-      <button onClick={resetQuestions}>Play Again!</button>
+    <div className="result-page-wrapper">
+      <div>
+        {props.currentQuestion <= 5 && (
+          <ResultMessage message="You're not Wild enough" />
+        )}
+        {props.currentQuestion > 5 && props.currentQuestion <= 14 && (
+          <ResultMessage message="Try harder to be Wilder" />
+        )}
+        {props.currentQuestion === 15 && (
+          <ResultMessage message="May the force be with you my Wildest one" />
+        )}
+
+        <button onClick={resetQuestions}>Play Again!</button>
+      </div>
     </div>
   );
 }
