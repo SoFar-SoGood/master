@@ -1,7 +1,3 @@
-button {
-  font-family: "Nunito", sans-serif;
-  cursor: pointer;
-}
 .game-page-wrapper {
   display: flex;
   justify-content: center;

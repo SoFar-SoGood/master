@@ -16,3 +16,8 @@ body {
   height: 100vh;
   color: #333;
 }
+
+button {
+  font-family: "Nunito", sans-serif;
+  cursor: pointer;
+}
