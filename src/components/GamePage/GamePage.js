@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import parse from "html-react-parser";
-// import "./GamePage.css";
+import "./GamePage.css";
 
 function GamePage(props) {
   // console.log(props);
@@ -70,35 +70,47 @@ function GamePage(props) {
   };
 
   return (
-    <div>
-      {props.questions.length ? (
-        <div>
-          <h1>{props.moneyDisplay}$</h1>
-          <h1>{props.currentQuestion}.</h1>
-          {filteredQuestion.map((item, index) => (
-            <div key={index}>
-              <h1>{parse(item.question)}</h1>
-
-              {shuffleAnswers(item.correct_answer, item.incorrect_answers).map(
-                (answer, index) => (
-                  <button
-                    style={
-                      userAnswerState.userChoice === answer
-                        ? { backgroundColor: userAnswerState.color }
-                        : null
-                    }
-                    onClick={() => questionStatus(answer, item.correct_answer)}
-                    key={index}
-                    disabled={userAnswerState.userChoice ? true : false}
-                  >
-                    {parse(answer)}
-                  </button>
-                )
-              )}
-            </div>
-          ))}
-        </div>
-      ) : null}
+    <div className="game-page-wrapper">
+      <div className="game-page-width">
+        {props.questions.length ? (
+          <div>
+            <h1 className="game-page-money-display">{props.moneyDisplay}$</h1>
+            <h1 className="game-page-question-number">
+              {props.currentQuestion}
+            </h1>
+            {filteredQuestion.map((item, index) => (
+              <div key={index}>
+                <h1 className="game-page-question">{parse(item.question)}</h1>
+                <div className="game-page-answers-wrapper">
+                  {shuffleAnswers(
+                    item.correct_answer,
+                    item.incorrect_answers
+                  ).map((answer, index) => (
+                    <button
+                      className="game-page-answers-buttons"
+                      style={
+                        userAnswerState.userChoice === answer
+                          ? {
+                              backgroundColor: userAnswerState.color,
+                              opacity: "100%",
+                            }
+                          : null
+                      }
+                      onClick={() =>
+                        questionStatus(answer, item.correct_answer)
+                      }
+                      key={index}
+                      disabled={userAnswerState.userChoice ? true : false}
+                    >
+                      {parse(answer)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

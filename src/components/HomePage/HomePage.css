@@ -1,0 +1,30 @@
+.homepage-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.homepage-logo {
+  height: 35vh;
+  margin-bottom: 200px;
+}
+
+.homepage-button {
+  border-radius: 100px;
+  padding: 10px 25px;
+  font-size: 20px;
+}
+
+@media screen and (min-width: 600px) {
+    
+    .homepage-button {
+      font-size: 30px;
+    }
+  }
