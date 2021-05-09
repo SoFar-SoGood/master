@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import axios from "axios";
 import "./Reset.css";
 import "./App.css";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import GamePage from "./components/GamePage/GamePage";
 import ResultPage from "./components/ResultPage/ResultPage";
@@ -72,6 +72,7 @@ function App() {
               />
             )}
           />
+          <Redirect to="/" />
           {/* <Route exact path="/" component={HomePage} /> */}
         </Switch>
       </div>
