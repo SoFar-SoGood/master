@@ -5,15 +5,15 @@ import "./GamePage.css";
 function GamePage(props) {
   // console.log(props);
   const [userAnswerState, setUserAnswerState] = useState({});
-  console.log(userAnswerState);
+  
 
   useEffect(() => {
     setUserAnswerState({});
   }, [props.currentQuestion]);
 
-  const filteredQuestion = props.questions.filter((question, index) => {
-    return props.currentQuestion === index + 1;
-  });
+  const filteredQuestion = props.questions.filter(
+    (question, index) => props.currentQuestion === index + 1
+  );
 
   function shuffleAnswers(correctAnswer, incorrectAnswers) {
     const randomNumber = Math.floor(Math.random() * incorrectAnswers.length);
@@ -49,9 +49,7 @@ function GamePage(props) {
     } else {
       props.setMoneyDisplay(0);
       setUserAnswerState({ userChoice: userAnswer, color: "red" });
-      setTimeout(() => {
-        return props.history.push("/result");
-      }, 1500);
+      setTimeout(() => props.history.push("/result"), 1500);
     }
 
     if (props.currentQuestion === 5) {
@@ -61,9 +59,7 @@ function GamePage(props) {
       props.fetchQuestions("hard");
     }
     if (props.currentQuestion === 15) {
-      setTimeout(() => {
-        return props.history.push("/result");
-      }, 1500);
+      setTimeout(() => props.history.push("/result"), 1500);
     }
     // console.log("correct answer:", correctAnswer, "user answer:", userAnswer);
     //props.setCurrentQuestion(props.currentQuestion + 1);
@@ -85,8 +81,9 @@ function GamePage(props) {
                   {shuffleAnswers(
                     item.correct_answer,
                     item.incorrect_answers
-                  ).map((answer, index) => (
+                  ).map((answer) => (
                     <button
+                      type="button"
                       className="game-page-answers-buttons"
                       style={
                         userAnswerState.userChoice === answer
@@ -96,9 +93,7 @@ function GamePage(props) {
                             }
                           : null
                       }
-                      onClick={() =>
-                        questionStatus(answer, item.correct_answer)
-                      }
+                      onClick={() => questionStatus(answer, item.correct_answer)}
                       key={index}
                       disabled={userAnswerState.userChoice ? true : false}
                     >

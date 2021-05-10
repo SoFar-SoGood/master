@@ -6,6 +6,33 @@
     },
     "extends": "airbnb",
     "rules": {
+        "indent": [
+            0
+        ],
+        "no-unneeded-ternary": [
+            0
+        ],
+        "react/prop-types": [
+            0
+        ],
+        "react/no-array-index-key": [
+            0
+        ],
+        "react/jsx-one-expression-per-line": [
+            0
+        ],
+        "comma-dangle": [
+            0
+        ],
+        "spaced-comment": [
+            0
+        ],
+        "react/jsx-props-no-spreading": [
+            0
+        ],
+        "linebreak-style": [
+            0
+        ],
         "react/jsx-filename-extension": [
             0
         ],

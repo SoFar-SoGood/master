@@ -21,7 +21,7 @@ function App() {
         setQuestions([...questions, ...response.data.results]);
       })
       .catch((error) => {
-        console.log(error);
+        throw error;
       });
   }
 
