@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import axios from "axios";
-import "./reset.css";
+import "./Reset.css";
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
