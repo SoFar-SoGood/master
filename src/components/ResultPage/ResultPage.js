@@ -1,5 +1,7 @@
 import React from "react";
+
 import "./ResultPage.css";
+
 import ResultMessage from "../ResultMessage/ResultMessage";
 
 function ResultPage(props) {
@@ -34,7 +36,7 @@ function ResultPage(props) {
           />
         )}
 
-        <button onClick={resetQuestions} className="result-page-buttons">
+        <button onClick={resetQuestions} className="result-page-buttons" type="button">
           PLAY AGAIN
         </button>
       </div>
