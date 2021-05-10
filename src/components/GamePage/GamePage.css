@@ -1,0 +1,97 @@
+.game-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 20px;
+}
+.game-page-width {
+  width: 90%;
+  text-align: center;
+}
+.game-page-money-display {
+  color: white;
+  font-size: 25px;
+  margin: 0 auto 20px;
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  font-weight: 600;
+}
+.game-page-question-number {
+  color: white;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 5px;
+  font-size: 20px;
+  margin: 0 auto -10px;
+  width: 30px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.game-page-question {
+  background-color: white;
+  padding: 30px;
+  line-height: 1.3;
+  border-radius: 15px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+.game-page-answers-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.game-page-answers-buttons {
+  border-radius: 100px;
+  opacity: 65%;
+  padding: 20px;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+@media screen and (min-width: 600px) {
+  .game-page-width {
+    width: 70%;
+  }
+  .game-page-answers-buttons {
+    padding: 12px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .game-page-answers-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .game-page-width {
+    width: 960px;
+  }
+  .game-page-money-display {
+    margin-bottom: 80px;
+    font-size: 40px;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+  }
+  .game-page-question-number {
+    font-size: 30px;
+    width: 40px;
+    margin: 0 auto -16px;
+  }
+  .game-page-question {
+    margin-bottom: 50px;
+  }
+  .game-page-answers-buttons:nth-child(1) {
+    margin-right: 50px;
+  }
+  .game-page-answers-buttons:nth-child(3) {
+    margin-right: 50px;
+  }
+  .game-page-answers-buttons {
+    width: calc(50% - 25px);
+    margin-bottom: 30px;
+  }
+}
