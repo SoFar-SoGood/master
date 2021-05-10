@@ -5,7 +5,6 @@ import "./GamePage.css";
 function GamePage(props) {
   // console.log(props);
   const [userAnswerState, setUserAnswerState] = useState({});
-  
 
   useEffect(() => {
     setUserAnswerState({});
@@ -93,7 +92,9 @@ function GamePage(props) {
                             }
                           : null
                       }
-                      onClick={() => questionStatus(answer, item.correct_answer)}
+                      onClick={() =>
+                        questionStatus(answer, item.correct_answer)
+                      }
                       key={index}
                       disabled={userAnswerState.userChoice ? true : false}
                     >
